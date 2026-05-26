@@ -27,7 +27,7 @@ Inside `webmgnt`, API routing is not performed by reading fields from the JSON B
 
 ## 4. Root Cause Analysis (sub_43E684)
 
-![1779806510276](1779806510276.png)
+![1779806510276](COMFAST_CF-WR631AX_RCE_Analysis_EN/1779806510276.png)
 
 Upon entering function `sub_43E684`, the program uses the OpenWrt-style `blobmsg_parse_0` function to extract data from the JSON blob converted from the HTTP body.
 
@@ -78,7 +78,7 @@ The router silently starts a password-less `telnetd` backdoor listening on port 
 
 After emulating the web interface with EMUX:
 
-![1779806289444](1779806289444.png)
+![1779806289444](COMFAST_CF-WR631AX_RCE_Analysis_EN/1779806289444.png)
 
 Paste our attack script into the browser console:
 
@@ -101,11 +101,11 @@ await sh('id')
 
 Result returned:
 
-![1779806340838](1779806340838.png)
+![1779806340838](COMFAST_CF-WR631AX_RCE_Analysis_EN/1779806340838.png)
 
 Equivalent to executing directly in the device terminal â€?RCE confirmed:
 
-![1779806461339](1779806461339.png)
+![1779806461339](COMFAST_CF-WR631AX_RCE_Analysis_EN/1779806461339.png)
 
 ## 7. Next Steps
 - **Authentication Bypass Research**: Reverse engineer the logic in `webmgnt` that validates `COMFAST_SESSIONID` to investigate whether an unauthenticated (Unauth) bypass exists, potentially escalating this authenticated RCE to a pre-auth unrestricted RCE.
